@@ -1,8 +1,15 @@
 from aiohttp import web
 from album_users.api.views import routes
+from album_users.users import Users
 
 
-app = web.Application()
-app.add_routes(routes)
-web.run_app(app)
-# docker run -t -p 8080:8080 album_users
+async def create_app():
+    app = web.Application()
+    app.add_routes(routes)
+    app['users'] = await Users.start()
+    return app
+
+
+if __name__ == '__main__':
+    app = create_app()
+    web.run_app(app)
