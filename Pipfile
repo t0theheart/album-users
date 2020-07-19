@@ -10,6 +10,7 @@ aiohttp = "*"
 marshmallow = "*"
 alembic = "*"
 psycopg2-binary = "*"
+asyncpg = "*"
 
 [requires]
 python_version = "3.8"
